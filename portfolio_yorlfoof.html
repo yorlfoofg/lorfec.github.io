@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorfec - Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f5f5f5; color: #333; }
+    header { background: #222; color: #fff; padding: 2rem 1rem; text-align: center; }
+    header h1 { font-size: 2.5rem; }
+    header p { font-size: 1.2rem; color: #aaa; }
+
+    nav { display: flex; justify-content: center; gap: 2rem; background: #444; padding: 1rem; }
+    nav a { color: #fff; text-decoration: none; font-weight: bold; }
+
+    section { padding: 3rem 1rem; max-width: 1000px; margin: auto; }
+    h2 { margin-bottom: 1rem; font-size: 2rem; color: #222; }
+
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .card { background: #fff; padding: 1rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .card:hover { transform: translateY(-5px); }
+    .card img { width: 100%; border-radius: 8px; }
+
+    footer { text-align: center; padding: 2rem 1rem; background: #222; color: #ccc; }
+    .contact a { color: #00aced; text-decoration: none; }
+
+    .lang-toggle { display: flex; justify-content: center; margin-top: 1rem; }
+    .lang-toggle button {
+      background: #444; color: white; border: none; padding: 0.5rem 1rem;
+      cursor: pointer; font-weight: bold; border-radius: 5px;
+    }
+    .lang-toggle button:hover { background: #666; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lorfec</h1>
+    <p>Développeur Web Créatif</p>
+  </header>
+
+  <nav>
+    <a href="#about">À propos</a>
+    <a href="#projects">Projets</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="lang-toggle">
+    <button onclick="toggleLanguage()">🌐 Basculer FR / EN</button>
+  </div>
+
+  <section id="about">
+    <h2 data-fr="À propos de moi" data-en="About Me">À propos de moi</h2>
+    <p data-fr="Je suis passionné par la création de sites web modernes et efficaces. Je conçois des interfaces dynamiques avec HTML, CSS et JavaScript." data-en="I'm passionate about building modern and efficient websites. I create dynamic interfaces using HTML, CSS, and JavaScript.">Je suis passionné par la création de sites web modernes et efficaces. Je conçois des interfaces dynamiques avec HTML, CSS et JavaScript.</p>
+    <p data-fr="Je propose également des services de traduction en anglais pour les sites web, applications ou contenus professionnels." data-en="I also offer English translation services for websites, applications, or professional content.">Je propose également des services de traduction en anglais pour les sites web, applications ou contenus professionnels.</p>
+  </section>
+
+  <section id="projects">
+    <h2 data-fr="Mes Projets" data-en="My Projects">Mes Projets</h2>
+    <div class="projects">
+      <div class="card">
+        <img src="https://via.placeholder.com/300x180" alt="Projet 1">
+        <h3 data-fr="Projet 1" data-en="Project 1">Projet 1</h3>
+        <p data-fr="Un projet cool réalisé en HTML/CSS/JS." data-en="A cool project built with HTML/CSS/JS.">Un projet cool réalisé en HTML/CSS/JS.</p>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x180" alt="Projet 2">
+        <h3 data-fr="Projet 2" data-en="Project 2">Projet 2</h3>
+        <p data-fr="Un autre super projet interactif." data-en="Another great interactive project.">Un autre super projet interactif.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 data-fr="Contact" data-en="Contact">Contact</h2>
+    <p class="contact" data-fr="Tu peux me contacter par email à " data-en="You can contact me at ">Tu peux me contacter par email à <a href="mailto:contact@lorfec.com">contact@lorfec.com</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Lorfec. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    // Scroll fluide pour les ancres
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Fonction de bascule langue FR/EN
+    let currentLang = 'fr';
+    function toggleLanguage() {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      document.querySelectorAll('[data-fr]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + currentLang);
+      });
+    }
+  </script>
+</body>
+</html>
